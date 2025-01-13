@@ -1,33 +1,7 @@
 '''
-This program uses Ceasar or ROT-13 method first and then Fernet encryption.
-So the string your enter in a file will get encrypted with Ceasar and then,
-that encrypted string will be encrypted by Fernet encryption and stored to
-the file.
-
-History 
-
-Dec/14/24(Ver. 1.0)
- 1) Reformatted the GUI code from xAutoBackup code
- 2) Connected existing QR code to the GUI
- 3) Added functionality if a picture is not included, the QR is generated
-    without any in the center.
- 4) Tested it
-Jan/12/25(Ver. 1.1)
- 1) Created Github repo
- 2) Created and implemented logo
- 3) Generated executable for Linux and Windows
- 4) Added .gitignore, Readme
- 5) Organized pictures in generated_images and logos
- 6) Pushed code to repo
-//(Ver. 1.2)
- 1) 
- 
-Plans ******Import notes here********
- 
- 1) 
- 2) Add more QR styles
- 3) Add the ability to select where to save the picture
- 4) Organize creation of labels and buttons
+This program uses qrcode package to create a QR image. Also, the user
+has the option to either add or not a picture to be included in the QR
+image. The advantage of this program is that it has a GUI using PyQt5.
 '''
 
 import sys
@@ -53,6 +27,7 @@ elif operating_system == "Windows":
 subprocess.call(bash_cmd, shell=True)
 #-----------------------------------------------------------------------
 
+# Used to include the logo into the executable
 resource_path = os.path.join(os.path.dirname(__file__), 'res')
 logo_path = os.path.join(resource_path, 'logo.png')
 
@@ -210,11 +185,3 @@ if __name__ == "__main__":
     ui.show()
 
     sys.exit(app.exec_())
-
-
-
-#-------Old code-----------
-
-# img_1 = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer())
-# img_2 = qr.make_image(image_factory=StyledPilImage, color_mask=RadialGradiantColorMask())
-
